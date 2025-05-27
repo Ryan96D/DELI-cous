@@ -1,3 +1,9 @@
+package Models;
+
+import Enums.BreadType;
+import Enums.Sauce;
+import Enums.Size;
+
 import java.util.List;
 
 public class Sandwich {

@@ -1,3 +1,7 @@
+package Menus;
+
+import Models.Sandwich;
+
 public class SandwichBuilder {
     public static Sandwich build() {
         // Ask for sandwich size
@@ -10,7 +14,7 @@ public class SandwichBuilder {
         // Ask for notes on order
 
 
-        // return new Sandwich(...);
+        // return new Models.Sandwich(...);
         return null;
     }
 }

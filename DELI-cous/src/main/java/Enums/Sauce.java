@@ -1,3 +1,5 @@
+package Enums;
+
 public enum Sauce {
     MAYO,
     MUSTARD,

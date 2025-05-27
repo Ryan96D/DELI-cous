@@ -1,3 +1,5 @@
+package Models;
+
 public class Toppings {
     private String name;
     private boolean isPremium;

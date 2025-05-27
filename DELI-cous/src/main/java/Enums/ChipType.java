@@ -1,3 +1,5 @@
+package Enums;
+
 public enum ChipType {
     BBQ,
     SOUR_CREAM_AND_ONION,

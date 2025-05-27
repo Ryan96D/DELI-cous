@@ -1,3 +1,7 @@
+package Receipts;
+
+import Menus.Order;
+
 public class Receipt {
     public static void saveReceipt(Order order) {
         // Create folder /receipts if needed
