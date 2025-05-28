@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Sandwich implements PricedItem {
 
-    private BreadType breadType;
+    private Bread breadType;
     private Size size;
     private List<Meat> meats;
     private List<Cheese> cheeses;
@@ -17,7 +17,12 @@ public class Sandwich implements PricedItem {
     private int extraMeatCount;
     private int extraCheeseCount;
 
-    public Sandwich(BreadType breadType, Size size,
+    public Sandwich(Bread breadType, Size size) {
+        this.breadType = breadType;
+        this.size = size;
+    }
+
+    public Sandwich(Bread breadType, Size size,
                     List<Meat> meats, List<Cheese> cheeses,
                     List<RegularTopping> regularToppings, List<Sauce> sauces,
                     boolean toasted, int extraMeatCount, int extraCheeseCount) {
@@ -29,6 +34,78 @@ public class Sandwich implements PricedItem {
         this.sauces = sauces;
         this.toasted = toasted;
         this.extraMeatCount = extraMeatCount;
+        this.extraCheeseCount = extraCheeseCount;
+    }
+
+    public Bread getBreadType() {
+        return breadType;
+    }
+
+    public void setBreadType(Bread breadType) {
+        this.breadType = breadType;
+    }
+
+    public Size getSize() {
+        return size;
+    }
+
+    public void setSize(Size size) {
+        this.size = size;
+    }
+
+    public List<Meat> getMeats() {
+        return meats;
+    }
+
+    public void setMeats(List<Meat> meats) {
+        this.meats = meats;
+    }
+
+    public List<Cheese> getCheeses() {
+        return cheeses;
+    }
+
+    public void setCheeses(List<Cheese> cheeses) {
+        this.cheeses = cheeses;
+    }
+
+    public List<RegularTopping> getRegularToppings() {
+        return regularToppings;
+    }
+
+    public void setRegularToppings(List<RegularTopping> regularToppings) {
+        this.regularToppings = regularToppings;
+    }
+
+    public List<Sauce> getSauces() {
+        return sauces;
+    }
+
+    public void setSauces(List<Sauce> sauces) {
+        this.sauces = sauces;
+    }
+
+    public boolean isToasted() {
+        return toasted;
+    }
+
+    public void setToasted(boolean toasted) {
+        this.toasted = toasted;
+    }
+
+    public int getExtraMeatCount() {
+        return extraMeatCount;
+    }
+
+    public void setExtraMeatCount(int extraMeatCount) {
+        this.extraMeatCount = extraMeatCount;
+    }
+
+    public int getExtraCheeseCount() {
+        return extraCheeseCount;
+    }
+
+    public void setExtraCheeseCount(int extraCheeseCount) {
         this.extraCheeseCount = extraCheeseCount;
     }
 
