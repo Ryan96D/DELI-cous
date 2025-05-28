@@ -1,12 +1,12 @@
 package util;
 
 import models.Order;
-import models.PricedItem;
+import models.items.PricedItem;
 
 import java.math.BigDecimal;
 import java.util.List;
 
-public class PriceCalculator {
+public class PriceTotalCalculator {
 
     public static BigDecimal calculateTotal(Order order) {
         BigDecimal total = BigDecimal.ZERO;

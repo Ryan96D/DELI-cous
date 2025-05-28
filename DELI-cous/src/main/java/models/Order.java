@@ -1,6 +1,7 @@
 package models;
 
-import util.PriceCalculator;
+import models.items.PricedItem;
+import util.PriceTotalCalculator;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -22,6 +23,6 @@ public class Order {
     }
 
     public BigDecimal getTotal() {
-        return PriceCalculator.calculateTotal(this);
+        return PriceTotalCalculator.calculateTotal(this);
     }
 }

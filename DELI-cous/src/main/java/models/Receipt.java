@@ -1,6 +1,4 @@
-package receipts;
-
-import models.Order;
+package models;
 
 public class Receipt {
     public static void saveReceipt(Order order) {

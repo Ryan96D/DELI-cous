@@ -1,6 +1,6 @@
 package menus;
 
-import models.Sandwich;
+import models.items.Sandwich;
 
 public class SandwichBuilderMenu {
     public static Sandwich build() {

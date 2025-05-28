@@ -1,4 +1,4 @@
-package models;
+package models.items;
 
 import enums.ChipType;
 
