@@ -4,9 +4,10 @@ import Enums.BreadType;
 import Enums.Sauce;
 import Enums.Size;
 
+import java.math.BigDecimal;
 import java.util.List;
 
-public class Sandwich {
+public class Sandwich implements PricedItem {
     private Size size;
     private BreadType breadType;
     private boolean toasted;
@@ -23,6 +24,16 @@ public class Sandwich {
         this.cheeses = cheeses;
         this.regularToppings = regularToppings;
         this.sauces = sauces;
+    }
+
+    @Override
+    public BigDecimal getPrice() {
+        return null; //get Price from PriceCalculator (later)
+    }
+
+    @Override
+    public String getReceiptLine() {
+        return size + " " + breadType + " Sandwich - $" + getPrice();
     }
 
 }
