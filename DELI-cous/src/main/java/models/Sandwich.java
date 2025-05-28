@@ -1,8 +1,8 @@
-package Models;
+package models;
 
-import Enums.BreadType;
-import Enums.Sauce;
-import Enums.Size;
+import enums.BreadType;
+import enums.Sauce;
+import enums.Size;
 
 import java.math.BigDecimal;
 import java.util.List;

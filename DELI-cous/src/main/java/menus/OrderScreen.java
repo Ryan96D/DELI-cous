@@ -1,6 +1,6 @@
-package Menus;
+package menus;
 
-import Models.Order;
+import models.Order;
 
 public class OrderScreen {
     private static Order currentOrder;

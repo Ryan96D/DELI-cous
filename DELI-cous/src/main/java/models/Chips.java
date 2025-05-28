@@ -1,6 +1,6 @@
-package Models;
+package models;
 
-import Enums.ChipType;
+import enums.ChipType;
 
 import java.math.BigDecimal;
 

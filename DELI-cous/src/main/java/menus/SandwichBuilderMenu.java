@@ -1,8 +1,8 @@
-package Menus;
+package menus;
 
-import Models.Sandwich;
+import models.Sandwich;
 
-public class SandwichBuilder {
+public class SandwichBuilderMenu {
     public static Sandwich build() {
         // Ask for sandwich size
         // Ask for bread type

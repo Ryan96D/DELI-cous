@@ -1,7 +1,7 @@
-package Models;
+package models;
 
-import Enums.DrinkFlavor;
-import Enums.Size;
+import enums.DrinkFlavor;
+import enums.Size;
 
 import java.math.BigDecimal;
 

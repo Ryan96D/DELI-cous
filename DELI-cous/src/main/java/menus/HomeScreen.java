@@ -1,4 +1,4 @@
-package Menus;
+package menus;
 
 public class HomeScreen {
     public static void start() {
