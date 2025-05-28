@@ -1,6 +1,6 @@
 package Receipts;
 
-import Menus.Order;
+import Models.Order;
 
 public class Receipt {
     public static void saveReceipt(Order order) {

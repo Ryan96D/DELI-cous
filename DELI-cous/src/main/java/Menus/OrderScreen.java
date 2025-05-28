@@ -1,10 +1,12 @@
 package Menus;
 
+import Models.Order;
+
 public class OrderScreen {
     private static Order currentOrder;
 
     public static void startNewOrder() {
-        // Initialize new Menus.Order
+        // Initialize new Models.Order
         // while (true):
         //   Print options: 1) Add Models.Sandwich 2) Add Models.Drink 3) Add Models.Chips 4) Checkout 0) Cancel
         //   Switch case depending on input:

@@ -1,4 +1,4 @@
-package Menus;
+package Models;
 
 import java.util.List;
 
