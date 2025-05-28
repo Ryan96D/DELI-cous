@@ -2,18 +2,47 @@ package menus;
 
 import models.Order;
 
-public class OrderScreen {
-    private static Order currentOrder;
+import java.util.Scanner;
 
-    public static void startNewOrder() {
-        // Initialize new Models.Order
-        // while (true):
-        //   Print options: 1) Add Models.Sandwich 2) Add Models.Drink 3) Add Models.Chips 4) Checkout 0) Cancel
-        //   Switch case depending on input:
-        //     1: Models.Sandwich
-        //     2: prompt drink size/flavor
-        //     3: prompt chip type →
-        //     4: display details, confirm or cancel checkout
-        //     0: return to home
+public class OrderScreen {
+
+    public static void start() {
+        Scanner scanner = new Scanner(System.in);
+
+        while (true) {
+            System.out.println("\n=== Order Screen ===");
+            System.out.println("1) Add Sandwich");
+            System.out.println("2) Add Drink");
+            System.out.println("3) Add Chips");
+            System.out.println("4) Checkout");
+            System.out.println("0) Cancel Order and Return to Home");
+            System.out.print("Please select an option: ");
+
+            String input = scanner.nextLine().trim();
+
+            switch (input) {
+                case "1":
+                    // TODO: call Sandwich creation
+                    System.out.println("Add Sandwich selected.");
+                    break;
+                case "2":
+                    // TODO: call Drink creation
+                    System.out.println("Add Drink selected.");
+                    break;
+                case "3":
+                    // TODO: call Chips creation
+                    System.out.println("Add Chips selected.");
+                    break;
+                case "4":
+                    // TODO: call Checkout
+                    System.out.println("Checkout selected.");
+                    break;
+                case "0":
+                    System.out.println("Order cancelled. Returning to Home Screen.");
+                    return; // exit to HomeScreen
+                default:
+                    System.out.println("Invalid option. Please try again.");
+            }
+        }
     }
 }
