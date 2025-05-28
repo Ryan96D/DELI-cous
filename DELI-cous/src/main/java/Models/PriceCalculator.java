@@ -1,15 +1,19 @@
 package Models;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 public class PriceCalculator {
 
     public static BigDecimal calculateTotal(Order order) {
-        // Loop through sandwiches, drinks, chips
-        // Use size + extras to compute total
+        BigDecimal total = BigDecimal.ZERO;
 
+        List<? extends PricedItem> allItems = order.getAllItems(); // assume you collect all items this way
 
-        // Return total as BigDecimal
-        return null;
+        for (PricedItem item : allItems) {
+            total = total.add(item.getPrice());
+        }
+
+        return total;
     }
 }

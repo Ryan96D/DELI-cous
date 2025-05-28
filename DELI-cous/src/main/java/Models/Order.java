@@ -5,22 +5,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Order {
-    private List<PricedItem> items = new ArrayList<>();
+    private List<PricedItem> items;
+
+    public Order() {
+        this.items = new ArrayList<>();
+    }
 
     public void addItem(PricedItem item) {
         items.add(item);
     }
 
-    public BigDecimal getTotal() {
-        return items.stream()
-                .map(PricedItem::getPrice)
-                .reduce(BigDecimal.ZERO, BigDecimal::add);
+    public List<PricedItem> getAllItems() {
+        return items;
     }
 
-    public void printReceipt() {
-        for (PricedItem item : items) {
-            System.out.println(item.getReceiptLine());
-        }
-        System.out.println("Total: $" + getTotal());
+    public BigDecimal getTotal() {
+        return PriceCalculator.calculateTotal(this);
     }
 }
