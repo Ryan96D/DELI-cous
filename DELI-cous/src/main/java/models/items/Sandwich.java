@@ -70,4 +70,38 @@ public class Sandwich implements PricedItem {
 
         return total;
     }
+
+    @Override
+    public String getReceiptLine() {
+        StringBuilder line = new StringBuilder();
+
+        line.append(size).append(" ").append(breadType).append(" Sandwich");
+        if (toasted) {
+            line.append(" (Toasted)");
+        }
+        line.append("\n");
+
+        if (!meats.isEmpty()) {
+            line.append("  Meats: ").append(meats).append("\n");
+        }
+        if (!cheeses.isEmpty()) {
+            line.append("  Cheeses: ").append(cheeses).append("\n");
+        }
+        if (!regularToppings.isEmpty()) {
+            line.append("  Toppings: ").append(regularToppings).append("\n");
+        }
+        if (!sauces.isEmpty()) {
+            line.append("  Sauces: ").append(sauces).append("\n");
+        }
+        if (extraMeatCount > 0) {
+            line.append("  Extra Meat x").append(extraMeatCount).append("\n");
+        }
+        if (extraCheeseCount > 0) {
+            line.append("  Extra Cheese x").append(extraCheeseCount).append("\n");
+        }
+
+        line.append("  Price: $").append(getPrice());
+
+        return line.toString();
+    }
 }
