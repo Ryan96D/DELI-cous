@@ -1,10 +1,4 @@
-package util;
-
-import models.Order;
-import models.items.PricedItem;
-
-import java.math.BigDecimal;
-import java.util.List;
+package utils;
 
 //public class PriceTotalCalculator {
 

@@ -4,6 +4,7 @@ import models.Order;
 import models.items.Drinks;
 import models.items.Chips;
 import models.items.Sandwich;
+import utils.ReceiptWriter;
 
 import java.util.Scanner;
 
@@ -60,7 +61,9 @@ public class OrderScreen {
                     String confirm = scanner.nextLine().trim().toLowerCase();
 
                     if (confirm.equals("yes") || confirm.equals("y")) {
-                        System.out.println("Order confirmed! Thank you.");
+                        ReceiptWriter.writeReceipt(currentOrder);
+
+                        System.out.println("Order confirmed! Receipt saved. Thank you.");
                         return;
                     } else {
                         System.out.println("Returning to Order Menu.");
