@@ -4,6 +4,7 @@ import models.items.Sandwich;
 import models.items.Drinks;
 import models.items.Chips;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,6 +18,24 @@ public class Order {
         sandwiches = new ArrayList<>();
         drinks = new ArrayList<>();
         chips = new ArrayList<>();
+    }
+
+    public BigDecimal getTotalPrice() {
+        BigDecimal total = BigDecimal.ZERO;
+
+        for (Sandwich sandwich : sandwiches) {
+            total = total.add(sandwich.getPrice());
+        }
+
+        for (Drinks drink : drinks) {
+            total = total.add(drink.getPrice());
+        }
+
+        for (Chips chip : chips) {
+            total = total.add(chip.getPrice());
+        }
+
+        return total;
     }
 
     // Add items

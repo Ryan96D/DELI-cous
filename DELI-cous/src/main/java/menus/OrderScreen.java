@@ -47,9 +47,9 @@ public class OrderScreen {
                     }
                     break;
                 case "4":
-                    System.out.println("Checkout selected.");
-                    // TODO: implement checkout
-                    break;
+                    OrderSummaryScreen.display(currentOrder);
+                    System.out.println("Thank you for your order!");
+                    return; // Exit
                 case "0":
                     System.out.println("Order cancelled. Returning to Home Screen.");
                     return; // exit to HomeScreen
