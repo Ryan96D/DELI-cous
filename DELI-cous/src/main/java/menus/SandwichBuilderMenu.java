@@ -1,9 +1,14 @@
 package menus;
 
 import enums.Bread;
+import enums.Cheese;
+import enums.Meat;
 import enums.Size;
+import enums.Topping;
 import models.items.Sandwich;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class SandwichBuilderMenu {
@@ -31,7 +36,65 @@ public class SandwichBuilderMenu {
         int sizeChoice = Integer.parseInt(scanner.nextLine()) - 1;
         Size selectedSize = Size.values()[sizeChoice];
 
-        // TODO: Walk through toppings, sauces, extras...
+        // Choose Meat
+        List<Meat> selectedMeats = new ArrayList<>();
+        System.out.println("Select meat:");
+        for (Meat meat : Meat.values()) {
+            System.out.println(meat.ordinal() + 1 + ") " + meat);
+        }
+        System.out.print("Enter choice: ");
+        int meatChoice = Integer.parseInt(scanner.nextLine()) - 1;
+        selectedMeats.add(Meat.values()[meatChoice]);
+
+        // Ask for extra meat
+        System.out.print("Would you like extra meat? (y/n): ");
+        if (scanner.nextLine().trim().equalsIgnoreCase("y")) {
+            System.out.println("Select an additional meat:");
+            for (Meat meat : Meat.values()) {
+                System.out.println(meat.ordinal() + 1 + ") " + meat);
+            }
+            System.out.print("Enter choice: ");
+            int extraMeatChoice = Integer.parseInt(scanner.nextLine()) - 1;
+            Meat extraMeat = Meat.values()[extraMeatChoice];
+            selectedMeats.add(extraMeat);
+        }
+
+        // Choose Cheese
+        List<Cheese> selectedCheeses = new ArrayList<>();
+        System.out.println("Select cheese:");
+        for (Cheese cheese : Cheese.values()) {
+            System.out.println(cheese.ordinal() + 1 + ") " + cheese);
+        }
+        System.out.print("Enter choice: ");
+        int cheeseChoice = Integer.parseInt(scanner.nextLine()) - 1;
+        selectedCheeses.add(Cheese.values()[cheeseChoice]);
+
+        // Ask for extra cheese
+        System.out.print("Would you like extra cheese? (y/n): ");
+        if (scanner.nextLine().trim().equalsIgnoreCase("y")) {
+            System.out.println("Select an additional cheese:");
+            for (Cheese cheese : Cheese.values()) {
+                System.out.println(cheese.ordinal() + 1 + ") " + cheese);
+            }
+            System.out.print("Enter choice: ");
+            int extraCheeseChoice = Integer.parseInt(scanner.nextLine()) - 1;
+            Cheese extraCheese = Cheese.values()[extraCheeseChoice];
+            selectedCheeses.add(extraCheese);
+        }
+
+        // Choose Regular Toppings
+        List<Topping> selectedToppings = new ArrayList<>();
+        System.out.println("Select regular toppings (type 0 to stop):");
+        while (true) {
+            for (Topping topping : Topping.values()) {
+                System.out.println(topping.ordinal() + 1 + ") " + topping);
+            }
+            System.out.print("Enter choice: ");
+            String input = scanner.nextLine();
+            if (input.equals("0")) break;
+            int toppingChoice = Integer.parseInt(input) - 1;
+            selectedToppings.add(Topping.values()[toppingChoice]);
+        }
 
         // Toasted?
         System.out.print("Would you like the sandwich toasted? (y/n): ");
@@ -39,9 +102,10 @@ public class SandwichBuilderMenu {
 
         // Create Sandwich object
         Sandwich sandwich = new Sandwich(selectedBread, selectedSize);
+        sandwich.setMeats(selectedMeats);
+        sandwich.setCheeses(selectedCheeses);
+        sandwich.setToppings(selectedToppings);
         sandwich.setToasted(toasted);
-
-        // TODO: Set toppings and sauces on sandwich here
 
         System.out.println("Sandwich added!");
 

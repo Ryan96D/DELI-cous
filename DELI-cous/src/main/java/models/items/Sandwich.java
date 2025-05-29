@@ -1,48 +1,43 @@
 package models.items;
 
 import enums.*;
-import java.math.BigDecimal;
+
+import java.util.ArrayList;
 import java.util.List;
 
-public class Sandwich implements PricedItem {
+public class Sandwich {
 
-    private Bread breadType;
+    private Bread bread;
     private Size size;
-    private List<Meat> meats;
-    private List<Cheese> cheeses;
-    private List<RegularTopping> regularToppings;
-    private List<Sauce> sauces;
     private boolean toasted;
 
-    private int extraMeatCount;
-    private int extraCheeseCount;
+    private List<Meat> meats;
+    private Meat extraMeat;
 
-    public Sandwich(Bread breadType, Size size) {
-        this.breadType = breadType;
+    private List<Cheese> cheeses;
+    private Cheese extraCheese;
+
+    private List<Topping> toppings;
+
+    // Constructor
+    public Sandwich(Bread bread, Size size) {
+        this.bread = bread;
         this.size = size;
+        this.toasted = false;
+
+        this.meats = new ArrayList<>();
+        this.cheeses = new ArrayList<>();
+        this.toppings = new ArrayList<>(); // add this
     }
 
-    public Sandwich(Bread breadType, Size size,
-                    List<Meat> meats, List<Cheese> cheeses,
-                    List<RegularTopping> regularToppings, List<Sauce> sauces,
-                    boolean toasted, int extraMeatCount, int extraCheeseCount) {
-        this.breadType = breadType;
-        this.size = size;
-        this.meats = meats;
-        this.cheeses = cheeses;
-        this.regularToppings = regularToppings;
-        this.sauces = sauces;
-        this.toasted = toasted;
-        this.extraMeatCount = extraMeatCount;
-        this.extraCheeseCount = extraCheeseCount;
+    // Getters and setters
+
+    public Bread getBread() {
+        return bread;
     }
 
-    public Bread getBreadType() {
-        return breadType;
-    }
-
-    public void setBreadType(Bread breadType) {
-        this.breadType = breadType;
+    public void setBread(Bread bread) {
+        this.bread = bread;
     }
 
     public Size getSize() {
@@ -53,12 +48,28 @@ public class Sandwich implements PricedItem {
         this.size = size;
     }
 
+    public boolean isToasted() {
+        return toasted;
+    }
+
+    public void setToasted(boolean toasted) {
+        this.toasted = toasted;
+    }
+
     public List<Meat> getMeats() {
         return meats;
     }
 
     public void setMeats(List<Meat> meats) {
         this.meats = meats;
+    }
+
+    public Meat getExtraMeat() {
+        return extraMeat;
+    }
+
+    public void setExtraMeat(Meat extraMeat) {
+        this.extraMeat = extraMeat;
     }
 
     public List<Cheese> getCheeses() {
@@ -69,87 +80,19 @@ public class Sandwich implements PricedItem {
         this.cheeses = cheeses;
     }
 
-    public List<RegularTopping> getRegularToppings() {
-        return regularToppings;
+    public Cheese getExtraCheese() {
+        return extraCheese;
     }
 
-    public void setRegularToppings(List<RegularTopping> regularToppings) {
-        this.regularToppings = regularToppings;
+    public void setExtraCheese(Cheese extraCheese) {
+        this.extraCheese = extraCheese;
     }
 
-    public List<Sauce> getSauces() {
-        return sauces;
+    public List<Topping> getToppings() {
+        return toppings;
     }
 
-    public void setSauces(List<Sauce> sauces) {
-        this.sauces = sauces;
-    }
-
-    public boolean isToasted() {
-        return toasted;
-    }
-
-    public void setToasted(boolean toasted) {
-        this.toasted = toasted;
-    }
-
-    public int getExtraMeatCount() {
-        return extraMeatCount;
-    }
-
-    public void setExtraMeatCount(int extraMeatCount) {
-        this.extraMeatCount = extraMeatCount;
-    }
-
-    public int getExtraCheeseCount() {
-        return extraCheeseCount;
-    }
-
-    public void setExtraCheeseCount(int extraCheeseCount) {
-        this.extraCheeseCount = extraCheeseCount;
-    }
-
-    @Override
-    public BigDecimal getPrice() {
-        BigDecimal total = switch (size) {
-            case SMALL -> new BigDecimal("5.50");
-            case MEDIUM -> new BigDecimal("7.00");
-            case LARGE -> new BigDecimal("8.50");
-        };
-
-        BigDecimal meatPrice = switch (size) {
-            case SMALL -> new BigDecimal("1.00");
-            case MEDIUM -> new BigDecimal("2.00");
-            case LARGE -> new BigDecimal("3.00");
-        };
-        total = total.add(meatPrice.multiply(BigDecimal.valueOf(meats.size())));
-
-        BigDecimal extraMeatPrice = switch (size) {
-            case SMALL -> new BigDecimal("0.50");
-            case MEDIUM -> new BigDecimal("1.00");
-            case LARGE -> new BigDecimal("1.50");
-        };
-        total = total.add(extraMeatPrice.multiply(BigDecimal.valueOf(extraMeatCount)));
-
-        BigDecimal cheesePrice = switch (size) {
-            case SMALL -> new BigDecimal("0.75");
-            case MEDIUM -> new BigDecimal("1.50");
-            case LARGE -> new BigDecimal("2.25");
-        };
-        total = total.add(cheesePrice.multiply(BigDecimal.valueOf(cheeses.size())));
-
-        BigDecimal extraCheesePrice = switch (size) {
-            case SMALL -> new BigDecimal("0.30");
-            case MEDIUM -> new BigDecimal("0.60");
-            case LARGE -> new BigDecimal("0.90");
-        };
-        total = total.add(extraCheesePrice.multiply(BigDecimal.valueOf(extraCheeseCount)));
-
-        return total;
-    }
-
-    @Override
-    public String getReceiptLine() {
-        return "";
+    public void setToppings(List<Topping> toppings) {
+        this.toppings = toppings;
     }
 }
