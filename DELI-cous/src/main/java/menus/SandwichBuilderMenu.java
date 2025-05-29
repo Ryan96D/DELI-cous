@@ -1,157 +1,40 @@
 package menus;
 
-import enums.Bread;
-import enums.Cheese;
-import enums.Meat;
-import enums.Size;
-import enums.Sauce;
-import enums.Topping;
+import enums.*;
 import models.items.Sandwich;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class SandwichBuilderMenu {
 
     public static Sandwich start() {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("\n=== Add Sandwich ===");
+        System.out.println("\n=== Build Your Sandwich ===");
 
-        // Choose Bread
-        System.out.println("Select your bread:");
-        for (Bread bread : Bread.values()) {
-            System.out.println(bread.ordinal() + 1 + ") " + bread);
-        }
-        System.out.print("Enter choice: ");
-        int breadChoice = Integer.parseInt(scanner.nextLine()) - 1;
-        Bread selectedBread = Bread.values()[breadChoice];
+        // Bread
+        Bread selectedBread = chooseOption("bread", Bread.values(), scanner);
 
-        // Choose Size
-        System.out.println("Select sandwich size:  (4\", 8\", 12\")");
-        for (Size size : Size.values()) {
-            System.out.println(size.ordinal() + 1 + ") " + size);
-        }
-        System.out.print("Enter choice: ");
-        int sizeChoice = Integer.parseInt(scanner.nextLine()) - 1;
-        Size selectedSize = Size.values()[sizeChoice];
+        // Size
+        Size selectedSize = chooseOption("size (4\", 8\", 12\")", Size.values(), scanner);
 
-        // Choose Meat (only one)
-        List<Meat> selectedMeats = new ArrayList<>();
-        System.out.println("Select meat:");
-        for (Meat meat : Meat.values()) {
-            System.out.println(meat.ordinal() + 1 + ") " + meat);
-        }
-        System.out.print("Enter choice: ");
-        int meatChoice = Integer.parseInt(scanner.nextLine()) - 1;
-        selectedMeats.add(Meat.values()[meatChoice]);
+        // Meats
+        List<Meat> selectedMeats = chooseMultiple("meat", Meat.values(), scanner, 2);
 
-        // Ask for extra meat (optional)
-        System.out.print("Would you like extra meat? (y/n): ");
-        if (scanner.nextLine().trim().equalsIgnoreCase("y")) {
-            System.out.println("Select an additional meat:");
-            for (Meat meat : Meat.values()) {
-                System.out.println(meat.ordinal() + 1 + ") " + meat);
-            }
-            System.out.print("Enter choice: ");
-            int extraMeatChoice = Integer.parseInt(scanner.nextLine()) - 1;
-            Meat extraMeat = Meat.values()[extraMeatChoice];
-            selectedMeats.add(extraMeat);
-        }
+        // Cheeses
+        List<Cheese> selectedCheeses = chooseMultiple("cheese", Cheese.values(), scanner, 2);
 
-        // Choose Cheese (only one)
-        List<Cheese> selectedCheeses = new ArrayList<>();
-        System.out.println("Select cheese:");
-        for (Cheese cheese : Cheese.values()) {
-            System.out.println(cheese.ordinal() + 1 + ") " + cheese);
-        }
-        System.out.print("Enter choice: ");
-        int cheeseChoice = Integer.parseInt(scanner.nextLine()) - 1;
-        selectedCheeses.add(Cheese.values()[cheeseChoice]);
+        // Toppings
+        List<Topping> selectedToppings = chooseMultiple("topping", Topping.values(), scanner, 10);
 
-        // Ask for extra cheese (optional)
-        System.out.print("Would you like extra cheese? (y/n): ");
-        if (scanner.nextLine().trim().equalsIgnoreCase("y")) {
-            System.out.println("Select an additional cheese:");
-            for (Cheese cheese : Cheese.values()) {
-                System.out.println(cheese.ordinal() + 1 + ") " + cheese);
-            }
-            System.out.print("Enter choice: ");
-            int extraCheeseChoice = Integer.parseInt(scanner.nextLine()) - 1;
-            Cheese extraCheese = Cheese.values()[extraCheeseChoice];
-            selectedCheeses.add(extraCheese);
-        }
+        // Sauces
+        List<Sauce> selectedSauces = chooseMultiple("sauce", Sauce.values(), scanner, 5);
 
-        // Choose Regular Toppings (10 max toppings)
-        List<Topping> selectedToppings = new ArrayList<>();
-        System.out.println("Select regular toppings (type 0 to stop, max 10 toppings):");
-        while (true) {
-            if (selectedToppings.size() >= 10) {
-                System.out.println("The sandwich is too full. Maximum 10 toppings allowed.");
-                break;
-            }
-
-            for (Topping topping : Topping.values()) {
-                System.out.println(topping.ordinal() + 1 + ") " + topping);
-            }
-            System.out.print("Select regular toppings (type 0 to stop): ");
-            String input = scanner.nextLine();
-
-            if (input.equals("0")) break;
-
-            int toppingChoice;
-            try {
-                toppingChoice = Integer.parseInt(input) - 1;
-                if (toppingChoice < 0 || toppingChoice >= Topping.values().length) {
-                    System.out.println("Invalid choice. Please try again.");
-                    continue;
-                }
-            } catch (NumberFormatException e) {
-                System.out.println("Invalid input. Please enter a number.");
-                continue;
-            }
-
-            selectedToppings.add(Topping.values()[toppingChoice]);
-        }
-
-        // Choose Sauces (max 5 sauces)
-        List<Sauce> selectedSauces = new ArrayList<>();
-        System.out.println("Select sauces (type 0 to stop, max 5 sauces):");
-        while (true) {
-            if (selectedSauces.size() >= 5) {
-                System.out.println("The sandwich is too full. Maximum 5 sauces allowed.");
-                break;
-            }
-
-            for (Sauce sauce : Sauce.values()) {
-                System.out.println(sauce.ordinal() + 1 + ") " + sauce);
-            }
-            System.out.print("Select sauce (type 0 to stop): ");
-            String input = scanner.nextLine();
-
-            if (input.equals("0")) break;
-
-            int sauceChoice;
-            try {
-                sauceChoice = Integer.parseInt(input) - 1;
-                if (sauceChoice < 0 || sauceChoice >= Sauce.values().length) {
-                    System.out.println("Invalid choice. Please try again.");
-                    continue;
-                }
-            } catch (NumberFormatException e) {
-                System.out.println("Invalid input. Please enter a number.");
-                continue;
-            }
-
-            selectedSauces.add(Sauce.values()[sauceChoice]);
-        }
-
-        // Toasted?
+        // Toasted
         System.out.print("Would you like the sandwich toasted? (y/n): ");
         boolean toasted = scanner.nextLine().trim().equalsIgnoreCase("y");
 
-        // Create Sandwich object
+        // Create and return the Sandwich
         Sandwich sandwich = new Sandwich(selectedBread, selectedSize);
         sandwich.setMeats(selectedMeats);
         sandwich.setCheeses(selectedCheeses);
@@ -159,8 +42,57 @@ public class SandwichBuilderMenu {
         sandwich.setSauces(selectedSauces);
         sandwich.setToasted(toasted);
 
-        System.out.println("Sandwich added!");
-
+        System.out.println("\nSandwich added!");
         return sandwich;
+    }
+
+    private static <T extends Enum<T>> T chooseOption(String category, T[] options, Scanner scanner) {
+        while (true) {
+            System.out.println("Select your " + category + ":");
+            for (int i = 0; i < options.length; i++) {
+                System.out.println((i + 1) + ") " + options[i]);
+            }
+            System.out.print("Enter choice: ");
+            String input = scanner.nextLine();
+            try {
+                int choice = Integer.parseInt(input);
+                if (choice >= 1 && choice <= options.length) {
+                    return options[choice - 1];
+                }
+            } catch (NumberFormatException ignored) {}
+            System.out.println("Invalid input. Please try again.");
+        }
+    }
+
+    private static <T extends Enum<T>> List<T> chooseMultiple(String category, T[] options, Scanner scanner, int max) {
+        List<T> selected = new ArrayList<>();
+        while (selected.size() < max) {
+            System.out.println("\nCurrent " + category + "s: " + selected);
+            System.out.println("Select " + category + " (0 to finish, R to remove last, B to go back):");
+            for (int i = 0; i < options.length; i++) {
+                System.out.println((i + 1) + ") " + options[i]);
+            }
+            System.out.print("Choice: ");
+            String input = scanner.nextLine().trim();
+            if (input.equalsIgnoreCase("0")) break;
+            if (input.equalsIgnoreCase("R")) {
+                if (!selected.isEmpty()) {
+                    T removed = selected.remove(selected.size() - 1);
+                    System.out.println("Removed: " + removed);
+                } else {
+                    System.out.println("Nothing to remove.");
+                }
+                continue;
+            }
+            try {
+                int choice = Integer.parseInt(input);
+                if (choice >= 1 && choice <= options.length) {
+                    selected.add(options[choice - 1]);
+                    continue;
+                }
+            } catch (NumberFormatException ignored) {}
+            System.out.println("Invalid input. Please try again.");
+        }
+        return selected;
     }
 }
