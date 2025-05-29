@@ -47,9 +47,47 @@ public class OrderScreen {
                     }
                     break;
                 case "4":
-                    OrderSummaryScreen.display(currentOrder);
-                    System.out.println("Thank you for your order!");
-                    return; // Exit
+                    System.out.println("\n=== Order Summary ===");
+
+                    if (currentOrder.getSandwiches().isEmpty() && currentOrder.getDrinks().isEmpty() && currentOrder.getChips().isEmpty()) {
+                        System.out.println("Your order is currently empty.");
+                        break;
+                    }
+
+                    if (!currentOrder.getSandwiches().isEmpty()) {
+                        System.out.println("\nSandwiches:");
+                        for (int i = 0; i < currentOrder.getSandwiches().size(); i++) {
+                            System.out.println((i + 1) + ") " + currentOrder.getSandwiches().get(i).getReceiptLine());
+                        }
+                    }
+
+                    if (!currentOrder.getDrinks().isEmpty()) {
+                        System.out.println("\nDrinks:");
+                        for (int i = 0; i < currentOrder.getDrinks().size(); i++) {
+                            System.out.println((i + 1) + ") " + currentOrder.getDrinks().get(i).getReceiptLine());
+                        }
+                    }
+
+                    if (!currentOrder.getChips().isEmpty()) {
+                        System.out.println("\nChips:");
+                        for (int i = 0; i < currentOrder.getChips().size(); i++) {
+                            System.out.println((i + 1) + ") " + currentOrder.getChips().get(i).getReceiptLine());
+                        }
+                    }
+
+                    System.out.println("\nTotal: $" + currentOrder.getTotalPrice());
+
+                    System.out.print("\nWould you like to proceed to checkout? (yes/no): ");
+                    String confirm = scanner.nextLine().trim().toLowerCase();
+
+                    if (confirm.equals("yes") || confirm.equals("y")) {
+                        System.out.println("Order confirmed! Thank you.");
+                        // TODO: send to receipt printer or finalize order
+                        return; // exits
+                    } else {
+                        System.out.println("Returning to Order Menu.");
+                    }
+                    break;
                 case "0":
                     System.out.println("Order cancelled. Returning to Home Screen.");
                     return; // exit to HomeScreen
