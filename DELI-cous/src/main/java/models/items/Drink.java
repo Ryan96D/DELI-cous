@@ -1,13 +1,12 @@
 package models.items;
 
-import enums.DrinkFlavor;
 import enums.Size;
 
 import java.math.BigDecimal;
 
 public class Drink implements PricedItem {
     private Size size;
-    private DrinkFlavor flavor;
+    private enums.Drink flavor;
 
     @Override
     public BigDecimal getPrice() {

@@ -1,28 +1,46 @@
 package models;
 
-import models.items.PricedItem;
-import util.PriceTotalCalculator;
+import models.items.Sandwich;
+import models.items.DrinkItem;
+
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Order {
-    private List<PricedItem> items;
+
+    private List<Sandwich> sandwiches;
+    private List<DrinkItem> drinks;
+
 
     public Order() {
-        this.items = new ArrayList<>();
+        sandwiches = new ArrayList<>();
+        drinks = new ArrayList<>();
+
     }
 
-    public void addItem(PricedItem item) {
-        items.add(item);
+    // Add items
+    public void addSandwich(Sandwich sandwich) {
+        sandwiches.add(sandwich);
     }
 
-    public List<PricedItem> getAllItems() {
-        return items;
+    public void addDrink(DrinkItem drink) {
+        drinks.add(drink);
     }
 
-    public BigDecimal getTotal() {
-        return PriceTotalCalculator.calculateTotal(this);
+
+
+    // Get lists
+    public List<Sandwich> getSandwiches() {
+        return sandwiches;
     }
+
+    public List<DrinkItem> getDrinks() {
+        return drinks;
+    }
+
+
+
+
 }

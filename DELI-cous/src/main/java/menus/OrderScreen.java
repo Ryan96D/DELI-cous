@@ -1,13 +1,15 @@
 package menus;
 
 import models.Order;
-
+import models.items.DrinkItem;
+import models.items.Sandwich;
 import java.util.Scanner;
 
 public class OrderScreen {
 
     public static void start() {
         Scanner scanner = new Scanner(System.in);
+        Order currentOrder = new Order();  // create a new order for this session
 
         while (true) {
             System.out.println("\n=== Order Screen ===");
@@ -22,20 +24,23 @@ public class OrderScreen {
 
             switch (input) {
                 case "1":
-                    SandwichBuilderMenu.start();
-                    System.out.println("Add Sandwich selected.");
+                    Sandwich sandwich = SandwichBuilderMenu.start();
+                    currentOrder.addSandwich(sandwich);  // add sandwich to order
+                    System.out.println("Sandwich added to order.");
                     break;
                 case "2":
-                    // TODO: call Drink creation
-                    System.out.println("Add Drink selected.");
+                    DrinkItem drink = DrinkBuilderMenu.start();
+                    currentOrder.addDrink(drink);  // add drink to order
+                    System.out.println("Drink added to order.");
                     break;
                 case "3":
-                    // TODO: call Chips creation
+                    // TODO: call Chips creation and add to order
                     System.out.println("Add Chips selected.");
                     break;
                 case "4":
-                    // TODO: call Checkout
+                    // TODO: handle checkout, e.g., show order summary, payment, etc.
                     System.out.println("Checkout selected.");
+                    // Example: currentOrder.checkout();
                     break;
                 case "0":
                     System.out.println("Order cancelled. Returning to Home Screen.");

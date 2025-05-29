@@ -1,11 +1,11 @@
 package models.items;
 
-import enums.ChipType;
+import enums.Chip;
 
 import java.math.BigDecimal;
 
 public class Chips implements PricedItem {
-    private ChipType type;
+    private Chip type;
 
     @Override
     public BigDecimal getPrice() {
