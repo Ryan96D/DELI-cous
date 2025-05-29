@@ -1,0 +1,10 @@
+=== Order Receipt ===
+
+Drinks:
+- LARGE COKE Drink - $3.00
+
+Chips:
+- SOUR_CREAM_AND_ONION Chips - $1.50
+
+Total: $4.50
+======================

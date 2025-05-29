@@ -1,0 +1,10 @@
+=== Order Receipt ===
+
+Drinks:
+- SMALL LEMONADE Drink - $2.00
+
+Chips:
+- BBQ Chips - $1.50
+
+Total: $3.50
+======================

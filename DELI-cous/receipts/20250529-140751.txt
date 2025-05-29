@@ -1,0 +1,27 @@
+=== Order Receipt ===
+
+Sandwich #1
+MEDIUM Sandwich on WHITE - $12.10
+- Bread: WHITE
+- Size: MEDIUM
+- Meats: [HAM, STEAK]
+- Cheeses: [PROVOLONE, AMERICAN]
+- Toppings: [PEPPERS, TOMATOES, CUCUMBERS]
+- Sauces: [MUSTARD, MAYO, RANCH]
+- Toasted: No
+
+Sandwich #2
+MEDIUM Sandwich on WHITE - $12.10
+- Bread: WHITE
+- Size: MEDIUM
+- Meats: [SALAMI, STEAK]
+- Cheeses: [AMERICAN, PROVOLONE]
+- Toppings: [LETTUCE]
+- Sauces: []
+- Toasted: Yes
+
+Drinks:
+- LARGE COKE Drink - $3.00
+
+Total: $27.20
+======================
