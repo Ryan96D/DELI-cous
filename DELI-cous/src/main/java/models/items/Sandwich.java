@@ -4,9 +4,11 @@ import enums.Bread;
 import enums.Cheese;
 import enums.Meat;
 import enums.Size;
+import enums.Sauce;
 import enums.Topping;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Sandwich implements PricedItem {
@@ -15,11 +17,13 @@ public class Sandwich implements PricedItem {
     private List<Meat> meats;
     private List<Cheese> cheeses;
     private List<Topping> toppings;
+    private List<Sauce> sauces;
     private boolean toasted;
 
     public Sandwich(Bread bread, Size size) {
         this.bread = bread;
         this.size = size;
+        this.sauces = new ArrayList<>();
     }
 
     // Getters
@@ -43,6 +47,10 @@ public class Sandwich implements PricedItem {
         return toppings;
     }
 
+    public List<Sauce> getSauces() {
+        return sauces;
+    }
+
     public boolean isToasted() {
         return toasted;
     }
@@ -58,6 +66,10 @@ public class Sandwich implements PricedItem {
 
     public void setToppings(List<Topping> toppings) {
         this.toppings = toppings;
+    }
+
+    public void setSauces(List<Sauce> sauces) {
+        this.sauces = sauces;
     }
 
     public void setToasted(boolean toasted) {

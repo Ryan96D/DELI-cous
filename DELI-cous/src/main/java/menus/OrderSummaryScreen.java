@@ -21,6 +21,7 @@ public class OrderSummaryScreen {
             System.out.println("- Meats: " + sandwich.getMeats());
             System.out.println("- Cheeses: " + sandwich.getCheeses());
             System.out.println("- Toppings: " + sandwich.getToppings());
+            System.out.println("- Sauces: " + sandwich.getSauces());
             System.out.println("- Toasted: " + (sandwich.isToasted() ? "Yes" : "No"));
         }
 

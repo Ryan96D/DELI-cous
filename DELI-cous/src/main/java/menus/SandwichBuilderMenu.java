@@ -4,6 +4,7 @@ import enums.Bread;
 import enums.Cheese;
 import enums.Meat;
 import enums.Size;
+import enums.Sauce;
 import enums.Topping;
 import models.items.Sandwich;
 
@@ -82,11 +83,10 @@ public class SandwichBuilderMenu {
             selectedCheeses.add(extraCheese);
         }
 
-// Choose Regular Toppings (multiple allowed, user types 0 to stop)
+        // Choose Regular Toppings (10 max toppings)
         List<Topping> selectedToppings = new ArrayList<>();
         System.out.println("Select regular toppings (type 0 to stop, max 10 toppings):");
         while (true) {
-            // Check if reached max toppings
             if (selectedToppings.size() >= 10) {
                 System.out.println("The sandwich is too full. Maximum 10 toppings allowed.");
                 break;
@@ -115,6 +115,38 @@ public class SandwichBuilderMenu {
             selectedToppings.add(Topping.values()[toppingChoice]);
         }
 
+        // Choose Sauces (max 5 sauces)
+        List<Sauce> selectedSauces = new ArrayList<>();
+        System.out.println("Select sauces (type 0 to stop, max 5 sauces):");
+        while (true) {
+            if (selectedSauces.size() >= 5) {
+                System.out.println("The sandwich is too full. Maximum 5 sauces allowed.");
+                break;
+            }
+
+            for (Sauce sauce : Sauce.values()) {
+                System.out.println(sauce.ordinal() + 1 + ") " + sauce);
+            }
+            System.out.print("Select sauce (type 0 to stop): ");
+            String input = scanner.nextLine();
+
+            if (input.equals("0")) break;
+
+            int sauceChoice;
+            try {
+                sauceChoice = Integer.parseInt(input) - 1;
+                if (sauceChoice < 0 || sauceChoice >= Sauce.values().length) {
+                    System.out.println("Invalid choice. Please try again.");
+                    continue;
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter a number.");
+                continue;
+            }
+
+            selectedSauces.add(Sauce.values()[sauceChoice]);
+        }
+
         // Toasted?
         System.out.print("Would you like the sandwich toasted? (y/n): ");
         boolean toasted = scanner.nextLine().trim().equalsIgnoreCase("y");
@@ -124,6 +156,7 @@ public class SandwichBuilderMenu {
         sandwich.setMeats(selectedMeats);
         sandwich.setCheeses(selectedCheeses);
         sandwich.setToppings(selectedToppings);
+        sandwich.setSauces(selectedSauces);
         sandwich.setToasted(toasted);
 
         System.out.println("Sandwich added!");
