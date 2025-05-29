@@ -1,29 +1,29 @@
 package menus;
 
-import enums.Drink;
+import enums.DrinkFlavor;
 import enums.Size;
-import models.items.DrinkItem;
+import models.items.Drinks;
 
 import java.util.Scanner;
 
 public class DrinkBuilderMenu {
 
-    public static DrinkItem start() {
+    public static Drinks start() {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("\n=== Add Drink ===");
 
         // Select Drink
         System.out.println("Select your drink:");
-        for (Drink drink : Drink.values()) {
-            System.out.println(drink.ordinal() + 1 + ") " + drink);
+        for (DrinkFlavor drinkFlavor : DrinkFlavor.values()) {
+            System.out.println(drinkFlavor.ordinal() + 1 + ") " + drinkFlavor);
         }
         System.out.print("Enter choice: ");
         int drinkChoice = Integer.parseInt(scanner.nextLine()) - 1;
-        Drink selectedDrink = Drink.values()[drinkChoice];
+        DrinkFlavor selectedDrinkFlavor = DrinkFlavor.values()[drinkChoice];
 
         // Select Size
-        System.out.println("Select drink size:");
+        System.out.println("Select drink size: (12 oz, 16 oz, 24 oz)");
         for (Size size : Size.values()) {
             System.out.println(size.ordinal() + 1 + ") " + size);
         }
@@ -31,10 +31,10 @@ public class DrinkBuilderMenu {
         int sizeChoice = Integer.parseInt(scanner.nextLine()) - 1;
         Size selectedSize = Size.values()[sizeChoice];
 
-        DrinkItem drinkItem = new DrinkItem(selectedDrink, selectedSize);
+        Drinks drinks = new Drinks(selectedDrinkFlavor, selectedSize);
 
-        System.out.println("Drink added: " + drinkItem);
+        System.out.println("Drink added: " + drinks);
 
-        return drinkItem;
+        return drinks;
     }
 }

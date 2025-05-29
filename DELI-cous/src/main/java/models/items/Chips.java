@@ -1,21 +1,21 @@
 package models.items;
 
-import enums.Chip;
+import enums.ChipFlavor;
 
 import java.math.BigDecimal;
 
 public class Chips implements PricedItem {
-    private Chip type;
+    private ChipFlavor type;
 
-    public Chips(Chip type) {
+    public Chips(ChipFlavor type) {
         this.type = type;
     }
 
-    public Chip getType() {
+    public ChipFlavor getType() {
         return type;
     }
 
-    public void setType(Chip type) {
+    public void setType(ChipFlavor type) {
         this.type = type;
     }
 

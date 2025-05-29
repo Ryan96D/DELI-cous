@@ -1,7 +1,7 @@
 package menus;
 
 import models.Order;
-import models.items.DrinkItem;
+import models.items.Drinks;
 import models.items.Chips;
 import models.items.Sandwich;
 
@@ -33,9 +33,9 @@ public class OrderScreen {
                     }
                     break;
                 case "2":
-                    DrinkItem drink = DrinkBuilderMenu.start();
-                    if (drink != null) {
-                        currentOrder.addDrink(drink);
+                    Drinks drinks = DrinkBuilderMenu.start();
+                    if (drinks != null) {
+                        currentOrder.addDrink(drinks);
                         System.out.println("Drink added to order.");
                     }
                     break;

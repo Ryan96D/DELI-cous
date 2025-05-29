@@ -1,6 +1,6 @@
 package enums;
 
-public enum Chip {
+public enum ChipFlavor {
     BBQ,
     SOUR_CREAM_AND_ONION,
     SALT_AND_VINEGAR,

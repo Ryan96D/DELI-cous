@@ -1,6 +1,6 @@
 package menus;
 
-import enums.Chip;
+import enums.ChipFlavor;
 import models.items.Chips;
 
 import java.util.Scanner;
@@ -14,8 +14,8 @@ public class ChipsBuilderMenu {
 
         // Show chip options
         System.out.println("Select your chips flavor:");
-        for (Chip chip : Chip.values()) {
-            System.out.println((chip.ordinal() + 1) + ") " + chip.toString().replace('_', ' '));
+        for (ChipFlavor chipFlavor : ChipFlavor.values()) {
+            System.out.println((chipFlavor.ordinal() + 1) + ") " + chipFlavor.toString().replace('_', ' '));
         }
         System.out.print("Enter choice: ");
 
@@ -28,14 +28,14 @@ public class ChipsBuilderMenu {
             return null;
         }
 
-        if (chipChoice < 0 || chipChoice >= Chip.values().length) {
+        if (chipChoice < 0 || chipChoice >= ChipFlavor.values().length) {
             System.out.println("Invalid choice, no chips added.");
             return null;
         }
 
-        Chip selectedChip = Chip.values()[chipChoice];
-        System.out.println("Added " + selectedChip.toString().replace('_', ' ') + " chips.");
+        ChipFlavor selectedChipFlavor = ChipFlavor.values()[chipChoice];
+        System.out.println("Added " + selectedChipFlavor.toString().replace('_', ' ') + " chips.");
 
-        return new Chips(selectedChip);
+        return new Chips(selectedChipFlavor);
     }
 }

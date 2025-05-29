@@ -1,7 +1,7 @@
 package models;
 
 import models.items.Sandwich;
-import models.items.DrinkItem;
+import models.items.Drinks;
 import models.items.Chips;
 
 import java.util.ArrayList;
@@ -10,7 +10,7 @@ import java.util.List;
 public class Order {
 
     private List<Sandwich> sandwiches;
-    private List<DrinkItem> drinks;
+    private List<Drinks> drinks;
     private List<Chips> chips;
 
     public Order() {
@@ -24,8 +24,8 @@ public class Order {
         sandwiches.add(sandwich);
     }
 
-    public void addDrink(DrinkItem drink) {
-        drinks.add(drink);
+    public void addDrink(Drinks drinks) {
+        this.drinks.add(drinks);
     }
 
     public void addChips(Chips chip) {
@@ -37,7 +37,7 @@ public class Order {
         return sandwiches;
     }
 
-    public List<DrinkItem> getDrinks() {
+    public List<Drinks> getDrinks() {
         return drinks;
     }
 

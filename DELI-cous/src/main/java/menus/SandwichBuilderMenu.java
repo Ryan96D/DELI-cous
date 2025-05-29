@@ -28,7 +28,7 @@ public class SandwichBuilderMenu {
         Bread selectedBread = Bread.values()[breadChoice];
 
         // Choose Size
-        System.out.println("Select sandwich size:");
+        System.out.println("Select sandwich size:  (4\", 8\", 12\")");
         for (Size size : Size.values()) {
             System.out.println(size.ordinal() + 1 + ") " + size);
         }
