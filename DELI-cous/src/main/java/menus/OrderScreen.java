@@ -16,10 +16,11 @@ public class OrderScreen {
 
         while (true) {
             System.out.println("\n=== Order Screen ===");
-            System.out.println("1) Add Sandwich");
-            System.out.println("2) Add Drink");
-            System.out.println("3) Add Chips");
-            System.out.println("4) Checkout");
+            System.out.println("1) Add Custom Sandwich");
+            System.out.println("2) Add Signature Sandwich");
+            System.out.println("3) Add Drink");
+            System.out.println("4) Add Chips");
+            System.out.println("5) Checkout");
             System.out.println("0) Cancel Order and Return to Home");
             System.out.print("Please select an option: ");
 
@@ -30,24 +31,31 @@ public class OrderScreen {
                     Sandwich sandwich = SandwichBuilderMenu.start();
                     if (sandwich != null) {
                         currentOrder.addSandwich(sandwich);
-                        System.out.println("Sandwich added to order.");
+                        System.out.println("Custom sandwich added to order.");
                     }
                     break;
                 case "2":
+                    Sandwich signatureSandwich = SignatureSandwichMenu.start();
+                    if (signatureSandwich != null) {
+                        currentOrder.addSandwich(signatureSandwich);
+                        System.out.println("Signature sandwich added to order.");
+                    }
+                    break;
+                case "3":
                     Drinks drinks = DrinkBuilderMenu.start();
                     if (drinks != null) {
                         currentOrder.addDrink(drinks);
                         System.out.println("Drink added to order.");
                     }
                     break;
-                case "3":
+                case "4":
                     Chips chips = ChipsBuilderMenu.start();
                     if (chips != null) {
                         currentOrder.addChips(chips);
                         System.out.println("Chips added to order.");
                     }
                     break;
-                case "4":
+                case "5":
                     if (currentOrder.getSandwiches().isEmpty() &&
                             currentOrder.getDrinks().isEmpty() &&
                             currentOrder.getChips().isEmpty()) {
@@ -69,6 +77,7 @@ public class OrderScreen {
                         System.out.println("Returning to Order Menu.");
                     }
                     break;
+
                 case "0":
                     System.out.println("Order cancelled. Returning to Home Screen.");
                     return; // exit to HomeScreen
