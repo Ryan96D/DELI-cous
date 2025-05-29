@@ -1,0 +1,34 @@
+=== Order Receipt ===
+
+Sandwich #1
+MEDIUM Sandwich on WHITE - $10.50
+- Bread: WHITE
+- Size: MEDIUM
+- Meats: [BACON]
+- Cheeses: [CHEDDAR]
+- Toppings: [LETTUCE, TOMATOES]
+- Sauces: [RANCH]
+- Toasted: Yes
+
+Sandwich #2
+SMALL Sandwich on WHITE - $7.75
+- Bread: WHITE
+- Size: SMALL
+- Meats: [STEAK, STEAK]
+- Cheeses: [AMERICAN]
+- Toppings: [LETTUCE, LETTUCE]
+- Sauces: [MAYO]
+- Toasted: Yes
+
+Sandwich #3
+LARGE Sandwich on WHITE - $16.75
+- Bread: WHITE
+- Size: LARGE
+- Meats: [ROAST_BEEF, STEAK, HAM]
+- Cheeses: [AMERICAN]
+- Toppings: [PEPPERS, LETTUCE, ONIONS, TOMATOES, JALAPENOS, CUCUMBERS, PICKLES, GUACAMOLE, MUSHROOMS]
+- Sauces: [MAYO]
+- Toasted: Yes
+
+Total: $35.00
+======================
