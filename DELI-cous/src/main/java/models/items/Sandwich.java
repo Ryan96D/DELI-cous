@@ -67,29 +67,47 @@ public class Sandwich implements PricedItem {
     @Override
     public BigDecimal getPrice() {
         BigDecimal total = switch (size) {
-            case SMALL -> new BigDecimal("5.00");
+            case SMALL -> new BigDecimal("5.50");
             case MEDIUM -> new BigDecimal("7.00");
-            case LARGE -> new BigDecimal("9.00");
+            case LARGE -> new BigDecimal("8.50");
         };
 
-        // Extra meat
-        if (meats != null && meats.size() > 1) {
-            BigDecimal extraMeatPrice = switch (size) {
+        // Meat prices
+        if (meats != null && !meats.isEmpty()) {
+            BigDecimal baseMeatPrice = switch (size) {
                 case SMALL -> new BigDecimal("1.00");
                 case MEDIUM -> new BigDecimal("2.00");
                 case LARGE -> new BigDecimal("3.00");
             };
-            total = total.add(extraMeatPrice.multiply(BigDecimal.valueOf(meats.size() - 1)));
+            BigDecimal extraMeatPrice = switch (size) {
+                case SMALL -> new BigDecimal("0.50");
+                case MEDIUM -> new BigDecimal("1.00");
+                case LARGE -> new BigDecimal("1.50");
+            };
+
+            total = total.add(baseMeatPrice);
+            if (meats.size() > 1) {
+                total = total.add(extraMeatPrice.multiply(BigDecimal.valueOf(meats.size() - 1)));
+            }
         }
 
-        // Extra cheese
-        if (cheeses != null && cheeses.size() > 1) {
-            BigDecimal extraCheesePrice = switch (size) {
+        // Cheese prices
+        if (cheeses != null && !cheeses.isEmpty()) {
+            BigDecimal baseCheesePrice = switch (size) {
                 case SMALL -> new BigDecimal("0.75");
                 case MEDIUM -> new BigDecimal("1.50");
                 case LARGE -> new BigDecimal("2.25");
             };
-            total = total.add(extraCheesePrice.multiply(BigDecimal.valueOf(cheeses.size() - 1)));
+            BigDecimal extraCheesePrice = switch (size) {
+                case SMALL -> new BigDecimal("0.30");
+                case MEDIUM -> new BigDecimal("0.60");
+                case LARGE -> new BigDecimal("0.90");
+            };
+
+            total = total.add(baseCheesePrice);
+            if (cheeses.size() > 1) {
+                total = total.add(extraCheesePrice.multiply(BigDecimal.valueOf(cheeses.size() - 1)));
+            }
         }
 
         return total;
