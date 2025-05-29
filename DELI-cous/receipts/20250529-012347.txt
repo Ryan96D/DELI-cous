@@ -1,0 +1,30 @@
+=== Order Receipt ===
+
+Sandwich #1
+SMALL Sandwich on WHITE - $7.75
+- Bread: WHITE
+- Size: SMALL
+- Meats: [HAM, HAM]
+- Cheeses: [AMERICAN]
+- Toppings: []
+- Sauces: [MAYO]
+- Toasted: Yes
+
+Sandwich #2
+LARGE Sandwich on RYE - $15.25
+- Bread: RYE
+- Size: LARGE
+- Meats: [ROAST_BEEF, STEAK]
+- Cheeses: [PROVOLONE]
+- Toppings: [LETTUCE, PEPPERS, ONIONS, TOMATOES, JALAPENOS, PICKLES]
+- Sauces: [MAYO, MUSTARD]
+- Toasted: Yes
+
+Drinks:
+- LARGE LEMONADE Drink - $3.00
+
+Chips:
+- SALT_AND_VINEGAR Chips - $1.50
+
+Total: $27.50
+======================

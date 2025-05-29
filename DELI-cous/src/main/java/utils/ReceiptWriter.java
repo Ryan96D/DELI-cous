@@ -33,6 +33,7 @@ public class ReceiptWriter {
             int sandwichNumber = 1;
             for (Sandwich sandwich : order.getSandwiches()) {
                 writer.write("\nSandwich #" + sandwichNumber++ + "\n");
+                writer.write(sandwich.getReceiptLine() + "\n");
                 writer.write("- Bread: " + sandwich.getBread() + "\n");
                 writer.write("- Size: " + sandwich.getSize() + "\n");
                 writer.write("- Meats: " + sandwich.getMeats() + "\n");

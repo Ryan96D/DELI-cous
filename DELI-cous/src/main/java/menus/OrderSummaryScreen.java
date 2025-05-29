@@ -16,6 +16,7 @@ public class OrderSummaryScreen {
         int sandwichNumber = 1;
         for (Sandwich sandwich : order.getSandwiches()) {
             System.out.println("\nSandwich #" + sandwichNumber++);
+            System.out.println(sandwich.getReceiptLine());
             System.out.println("- Bread: " + sandwich.getBread());
             System.out.println("- Size: " + sandwich.getSize());
             System.out.println("- Meats: " + sandwich.getMeats());

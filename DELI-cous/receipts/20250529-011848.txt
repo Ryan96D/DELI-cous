@@ -1,0 +1,10 @@
+=== Order Receipt ===
+
+Drinks:
+- MEDIUM LEMONADE Drink - $2.50
+
+Chips:
+- SOUR_CREAM_AND_ONION Chips - $1.50
+
+Total: $4.00
+======================
