@@ -3,7 +3,6 @@ package menus;
 import enums.DrinkFlavor;
 import enums.Size;
 import models.items.Drinks;
-import utils.MenuDisplayHelper;
 
 import java.util.Scanner;
 
