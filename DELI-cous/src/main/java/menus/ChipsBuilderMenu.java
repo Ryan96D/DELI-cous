@@ -1,7 +1,9 @@
 package menus;
 
 import enums.ChipFlavor;
+import enums.Size;
 import models.items.Chips;
+import utils.MenuDisplayHelper;
 
 import java.util.Scanner;
 
@@ -12,11 +14,9 @@ public class ChipsBuilderMenu {
 
         System.out.println("\n=== Add Chips ===");
 
-        // Show chip options
-        System.out.println("Select your chips flavor:");
-        for (ChipFlavor chipFlavor : ChipFlavor.values()) {
-            System.out.println((chipFlavor.ordinal() + 1) + ") " + chipFlavor.toString().replace('_', ' '));
-        }
+        // Pass Size.SMALL as default value since chips have flat pricing
+        MenuDisplayHelper.displayOptionsWithPrices("chip", ChipFlavor.values(), Size.SMALL, false);
+
         System.out.print("Enter choice: ");
 
         String input = scanner.nextLine();
