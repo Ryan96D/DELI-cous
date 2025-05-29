@@ -147,4 +147,9 @@ public class Sandwich implements PricedItem {
 
         return total;
     }
+
+    @Override
+    public String getReceiptLine() {
+        return "";
+    }
 }

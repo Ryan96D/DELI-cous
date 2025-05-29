@@ -22,7 +22,7 @@ public class OrderScreen {
 
             switch (input) {
                 case "1":
-                    // TODO: call Sandwich creation
+                    SandwichBuilderMenu.start();
                     System.out.println("Add Sandwich selected.");
                     break;
                 case "2":
