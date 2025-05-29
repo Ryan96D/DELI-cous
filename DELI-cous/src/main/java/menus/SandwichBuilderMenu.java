@@ -36,7 +36,7 @@ public class SandwichBuilderMenu {
         int sizeChoice = Integer.parseInt(scanner.nextLine()) - 1;
         Size selectedSize = Size.values()[sizeChoice];
 
-        // Choose Meat
+        // Choose Meat (only one)
         List<Meat> selectedMeats = new ArrayList<>();
         System.out.println("Select meat:");
         for (Meat meat : Meat.values()) {
@@ -46,7 +46,7 @@ public class SandwichBuilderMenu {
         int meatChoice = Integer.parseInt(scanner.nextLine()) - 1;
         selectedMeats.add(Meat.values()[meatChoice]);
 
-        // Ask for extra meat
+        // Ask for extra meat (optional)
         System.out.print("Would you like extra meat? (y/n): ");
         if (scanner.nextLine().trim().equalsIgnoreCase("y")) {
             System.out.println("Select an additional meat:");
@@ -59,7 +59,7 @@ public class SandwichBuilderMenu {
             selectedMeats.add(extraMeat);
         }
 
-        // Choose Cheese
+        // Choose Cheese (only one)
         List<Cheese> selectedCheeses = new ArrayList<>();
         System.out.println("Select cheese:");
         for (Cheese cheese : Cheese.values()) {
@@ -69,7 +69,7 @@ public class SandwichBuilderMenu {
         int cheeseChoice = Integer.parseInt(scanner.nextLine()) - 1;
         selectedCheeses.add(Cheese.values()[cheeseChoice]);
 
-        // Ask for extra cheese
+        // Ask for extra cheese (optional)
         System.out.print("Would you like extra cheese? (y/n): ");
         if (scanner.nextLine().trim().equalsIgnoreCase("y")) {
             System.out.println("Select an additional cheese:");
@@ -82,17 +82,36 @@ public class SandwichBuilderMenu {
             selectedCheeses.add(extraCheese);
         }
 
-        // Choose Regular Toppings
+// Choose Regular Toppings (multiple allowed, user types 0 to stop)
         List<Topping> selectedToppings = new ArrayList<>();
-        System.out.println("Select regular toppings (type 0 to stop):");
+        System.out.println("Select regular toppings (type 0 to stop, max 10 toppings):");
         while (true) {
+            // Check if reached max toppings
+            if (selectedToppings.size() >= 10) {
+                System.out.println("The sandwich is too full. Maximum 10 toppings allowed.");
+                break;
+            }
+
             for (Topping topping : Topping.values()) {
                 System.out.println(topping.ordinal() + 1 + ") " + topping);
             }
-            System.out.print("Enter choice: ");
+            System.out.print("Select regular toppings (type 0 to stop): ");
             String input = scanner.nextLine();
+
             if (input.equals("0")) break;
-            int toppingChoice = Integer.parseInt(input) - 1;
+
+            int toppingChoice;
+            try {
+                toppingChoice = Integer.parseInt(input) - 1;
+                if (toppingChoice < 0 || toppingChoice >= Topping.values().length) {
+                    System.out.println("Invalid choice. Please try again.");
+                    continue;
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter a number.");
+                continue;
+            }
+
             selectedToppings.add(Topping.values()[toppingChoice]);
         }
 

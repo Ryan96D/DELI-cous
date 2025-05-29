@@ -1,6 +1,10 @@
 package models.items;
 
-import enums.*;
+import enums.Bread;
+import enums.Cheese;
+import enums.Meat;
+import enums.Size;
+import enums.Topping;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +23,7 @@ public class Sandwich {
 
     private List<Topping> toppings;
 
-    // Constructor
+    // Constructor with bread and size
     public Sandwich(Bread bread, Size size) {
         this.bread = bread;
         this.size = size;
@@ -27,7 +31,7 @@ public class Sandwich {
 
         this.meats = new ArrayList<>();
         this.cheeses = new ArrayList<>();
-        this.toppings = new ArrayList<>(); // add this
+        this.toppings = new ArrayList<>();
     }
 
     // Getters and setters
@@ -92,7 +96,22 @@ public class Sandwich {
         return toppings;
     }
 
+    // Add a single topping, max 10 toppings allowed
+    public void addTopping(Topping topping) {
+        if (this.toppings.size() >= 10) {
+            System.out.println("The sandwich is too full.");
+        } else {
+            this.toppings.add(topping);
+        }
+    }
+
+    // Optionally you can have a setter that replaces all toppings:
     public void setToppings(List<Topping> toppings) {
-        this.toppings = toppings;
+        if (toppings.size() > 10) {
+            System.out.println("The sandwich is too full, adding only first 10 toppings.");
+            this.toppings = toppings.subList(0, 10);
+        } else {
+            this.toppings = toppings;
+        }
     }
 }
