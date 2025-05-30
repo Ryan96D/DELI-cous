@@ -1,0 +1,20 @@
+=== Order Receipt ===
+
+Sandwich #1
+LARGE Sandwich on RYE - $14.65
+- Bread: RYE
+- Size: LARGE
+- Meats: [TURKEY]
+- Cheeses: [PROVOLONE, CHEDDAR]
+- Toppings: [TOMATOES]
+- Sauces: [MAYO]
+- Toasted: Yes
+
+Drinks:
+- LARGE ORANGE_SODA Drink - $3.00
+
+Chips:
+- CLASSIC Chips - $1.50
+
+Total: $19.15
+======================
