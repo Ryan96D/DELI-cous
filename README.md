@@ -23,9 +23,10 @@ This Java application is built with Object-Oriented Programming (OOP) principles
 
 ### 🧾 Order Screen
 - `1) Add Sandwich` — Create a custom sandwich
-- `2) Add Drink` — Choose drink size and flavor
-- `3) Add Chips` — Choose chip type
-- `4) Checkout` — Review and confirm the full order
+- `2) Signature Sandwiches` — Choose from chosen presets
+- `3) Add Drink` — Choose drink size and flavor
+- `4) Add Chips` — Choose chip type
+- `5) Checkout` — Review and confirm the full order
 - `0) Cancel Order` — Discard the order and return home
 
 ### 🥪 Sandwich Builder
@@ -125,14 +126,6 @@ Total: $15.75
 
 ---
 
-## 📌 Future Enhancements
-
-- Enable online ordering via web interface  
-- Add customer name and payment info  
-- Connect with a database for order history  
-- Add admin dashboard for analytics  
-
----
 
 ## 👤 Author
 
