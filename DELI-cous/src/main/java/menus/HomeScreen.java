@@ -13,7 +13,14 @@ public class HomeScreen {
 
         // Main application loop - continues until user selects exit
         while (true) {
-            System.out.println("\n=== DELI-cious Point of Sale ===");
+            System.out.println( //ascii art
+                    "\n      :::::::::  :::   :::   :::     ::::    ::: ::: ::::::::          :::::::::  :::::::::: :::        ::::::::::: \n" +
+                    "     :+:    :+: :+:   :+: :+: :+:   :+:+:   :+: :+ :+:    :+:         :+:    :+: :+:        :+:            :+:      \n" +
+                    "    +:+    +:+  +:+ +:+ +:+   +:+  :+:+:+  +:+    +:+                +:+    +:+ +:+        +:+            +:+       \n" +
+                    "   +#++:++#:    +#++: +#++:++#++: +#+ +:+ +#+    +#++:++#++         +#+    +:+ +#++:++#   +#+            +#+        \n" +
+                    "  +#+    +#+    +#+  +#+     +#+ +#+  +#+#+#           +#+         +#+    +#+ +#+        +#+            +#+         \n" +
+                    " #+#    #+#    #+#  #+#     #+# #+#   #+#+#    #+#    #+#         #+#    #+# #+#        #+#            #+#          \n" +
+                    "###    ###    ###  ###     ### ###    ####     ########          #########  ########## ########## ########### \n");
             System.out.println("1) New Order");
             System.out.println("0) Exit");
             System.out.print("Please select an option: ");
