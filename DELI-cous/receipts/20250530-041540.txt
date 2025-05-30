@@ -1,0 +1,7 @@
+=== Order Receipt ===
+
+Drinks:
+- SMALL LEMONADE Drink - $2.00
+
+Total: $2.00
+======================
