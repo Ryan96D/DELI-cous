@@ -1,0 +1,7 @@
+=== Order Receipt ===
+
+Chips:
+- BBQ Chips - $1.50
+
+Total: $1.50
+======================
