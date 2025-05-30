@@ -19,7 +19,8 @@ public class SignatureSandwichMenu {
             System.out.println("3) Italian BMT");
             System.out.println("4) Turkey Club");
             System.out.println("5) Veggie Deluxe");
-            System.out.println("6) Back to main menu");
+            System.out.println("6) Wonder Bread Deluxe");
+            System.out.println("7) Back to main menu");
             System.out.print("Choose a signature sandwich to customize: ");
 
             String choice = scanner.nextLine().trim();
@@ -61,6 +62,13 @@ public class SignatureSandwichMenu {
                     return SignatureSandwichEditorMenu.editSandwich(veggiePreset);
 
                 case "6":
+                    // Create Veggie Deluxe preset with default ingredients
+                    WonderBreadDeluxe wonderBreadPreset = new WonderBreadDeluxe();
+                    displayPreset("Wonder Bread Deluxe",wonderBreadPreset);
+                    // Pass to editor for customization before returning
+                    return  SignatureSandwichEditorMenu.editSandwich(wonderBreadPreset);
+
+                case "7":
                     return null; // Signal to go back
 
                 default:

@@ -1,0 +1,17 @@
+=== Order Receipt ===
+
+Sandwich #1
+LARGE Sandwich on WHITE - $16.15
+- Bread: WHITE
+- Size: LARGE
+- Meats: [SALAMI, STEAK]
+- Cheeses: [CHEDDAR, PROVOLONE]
+- Toppings: [LETTUCE, PEPPERS, ONIONS]
+- Sauces: [MAYO]
+- Toasted: Yes
+
+Drinks:
+- LARGE COKE Drink - $3.00
+
+Total: $19.15
+======================

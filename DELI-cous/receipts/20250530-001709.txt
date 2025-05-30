@@ -1,0 +1,14 @@
+=== Order Receipt ===
+
+Sandwich #1
+SMALL Sandwich on WHITE - $5.50
+- Bread: WHITE
+- Size: SMALL
+- Meats: []
+- Cheeses: []
+- Toppings: []
+- Sauces: []
+- Toasted: No
+
+Total: $5.50
+======================
