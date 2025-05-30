@@ -1,19 +1,20 @@
-
 package menus;
 
 import enums.*;
 import models.items.Sandwich;
 import java.util.*;
 
+// Editor menu for customizing signature sandwiches after selecting a preset
 public class SignatureSandwichEditorMenu {
 
+    // Main editing interface - allows modification of any component of a signature sandwich
     public static Sandwich editSandwich(Sandwich preset) {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("\n=== Edit Signature Sandwich ===");
         displayCurrentSandwich(preset);
 
-        // Store components safely with proper types
+        // Create copies of all sandwich components to allow safe editing
         Bread selectedBread = preset.getBread();
         Size selectedSize = preset.getSize();
         List<Meat> selectedMeats = new ArrayList<>(preset.getMeats());
@@ -22,6 +23,7 @@ public class SignatureSandwichEditorMenu {
         List<Sauce> selectedSauces = new ArrayList<>(preset.getSauces());
         boolean toasted = preset.isToasted();
 
+        // Main editing loop - continue until customer is done customizing
         while (true) {
             System.out.println("\nWhat would you like to edit?");
             System.out.println("1) Bread (current: " + selectedBread + ")");
@@ -36,36 +38,45 @@ public class SignatureSandwichEditorMenu {
 
             String input = scanner.nextLine().trim();
 
+            // Handle each editing option with error handling
             try {
                 switch (input) {
                     case "0":
+                        // Build and return the final customized sandwich
                         return buildSandwich(selectedBread, selectedSize, selectedMeats,
                                 selectedCheeses, selectedToppings, selectedSauces, toasted);
                     case "1":
+                        // Edit bread type
                         Bread newBread = editSingle("bread", Bread.values(), scanner);
                         if (newBread != null) selectedBread = newBread;
                         break;
                     case "2":
+                        // Edit sandwich size
                         Size newSize = editSingle("size", Size.values(), scanner);
                         if (newSize != null) selectedSize = newSize;
                         break;
                     case "3":
+                        // Edit meat selection - at least one required
                         List<Meat> newMeats = editList("meat", Meat.values(), selectedMeats, scanner, true);
                         if (newMeats != null) selectedMeats = newMeats;
                         break;
                     case "4":
+                        // Edit cheese selection - at least one required
                         List<Cheese> newCheeses = editList("cheese", Cheese.values(), selectedCheeses, scanner, true);
                         if (newCheeses != null) selectedCheeses = newCheeses;
                         break;
                     case "5":
+                        // Edit toppings - optional
                         List<Topping> newToppings = editList("topping", Topping.values(), selectedToppings, scanner, false);
                         if (newToppings != null) selectedToppings = newToppings;
                         break;
                     case "6":
+                        // Edit sauces - optional
                         List<Sauce> newSauces = editList("sauce", Sauce.values(), selectedSauces, scanner, false);
                         if (newSauces != null) selectedSauces = newSauces;
                         break;
                     case "7":
+                        // Toggle toasted option
                         Boolean newToasted = editBoolean("toasted", toasted, scanner);
                         if (newToasted != null) toasted = newToasted;
                         break;
@@ -74,22 +85,25 @@ public class SignatureSandwichEditorMenu {
                 }
             } catch (Exception e) {
                 System.out.println("An error occurred. Please try again.");
-                e.printStackTrace(); // This will help us see what's going wrong
+                e.printStackTrace(); // Debug output for troubleshooting
             }
         }
     }
 
+    // Helper method for editing single-choice components (bread, size)
     private static <T extends Enum<T>> T editSingle(String name, T[] options, Scanner scanner) {
         try {
             System.out.println("\nSelect " + name + ":");
+            // Display all available options with numbers
             for (int i = 0; i < options.length; i++) {
                 System.out.println((i + 1) + ") " + options[i]);
             }
             System.out.print("Choice (0 to cancel): ");
 
             String input = scanner.nextLine().trim();
-            if (input.equals("0")) return null;
+            if (input.equals("0")) return null; // Cancel - keep current selection
 
+            // Parse and validate input
             int choice = Integer.parseInt(input);
             if (choice >= 1 && choice <= options.length) {
                 return options[choice - 1];
@@ -103,8 +117,10 @@ public class SignatureSandwichEditorMenu {
         }
     }
 
+    // Helper method for editing list components (meats, cheeses, toppings, sauces)
     private static <T extends Enum<T>> List<T> editList(String name, T[] options, List<T> current, Scanner scanner, boolean requireOne) {
         try {
+            // Work with a copy to avoid modifying original until confirmed
             List<T> selected = new ArrayList<>(current);
 
             while (true) {
@@ -115,12 +131,14 @@ public class SignatureSandwichEditorMenu {
                 String input = scanner.nextLine().trim();
 
                 if (input.equals("0")) {
+                    // Check if requirement is met before finishing
                     if (requireOne && selected.isEmpty()) {
                         System.out.println("Must have at least one " + name + ".");
                         continue;
                     }
                     return selected;
                 } else if (input.equals("1")) {
+                    // Add new item to selection
                     System.out.println("Add " + name + ":");
                     for (int i = 0; i < options.length; i++) {
                         System.out.println((i + 1) + ") " + options[i]);
@@ -143,6 +161,7 @@ public class SignatureSandwichEditorMenu {
                         System.out.println("Invalid input.");
                     }
                 } else if (input.equals("2")) {
+                    // Remove item from selection
                     if (selected.isEmpty()) {
                         System.out.println("Nothing to remove.");
                     } else {
@@ -170,10 +189,11 @@ public class SignatureSandwichEditorMenu {
         } catch (Exception e) {
             System.out.println("Error editing " + name + " list. Keeping current selection.");
             e.printStackTrace();
-            return current;
+            return current; // Return original if error occurs
         }
     }
 
+    // Helper method for editing boolean options (toasted)
     private static Boolean editBoolean(String name, Boolean current, Scanner scanner) {
         try {
             System.out.print("Make sandwich " + name + "? (y/n, enter to keep current): ");
@@ -187,6 +207,7 @@ public class SignatureSandwichEditorMenu {
         }
     }
 
+    // Display the current sandwich configuration
     private static void displayCurrentSandwich(Sandwich sandwich) {
         System.out.println("Current configuration:");
         System.out.println("  Bread: " + sandwich.getBread());
@@ -198,11 +219,13 @@ public class SignatureSandwichEditorMenu {
         System.out.println("  Toasted: " + sandwich.isToasted());
     }
 
+    // Build the final sandwich object with all selected components
     private static Sandwich buildSandwich(Bread bread, Size size, List<Meat> meats,
                                           List<Cheese> cheeses, List<Topping> toppings,
                                           List<Sauce> sauces, boolean toasted) {
         try {
             Sandwich sandwich = new Sandwich(bread, size);
+            // Create new lists to avoid reference issues
             sandwich.setMeats(new ArrayList<>(meats));
             sandwich.setCheeses(new ArrayList<>(cheeses));
             sandwich.setToppings(new ArrayList<>(toppings));
