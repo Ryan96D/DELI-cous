@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 
 public class MenuDisplayHelper {
 
-    // Show menu items with prices 
+    // Show menu items with prices
     public static <T extends Enum<T>> void displayOptionsWithPrices(String category, T[] items, Size size, boolean isExtra) {
         System.out.println("\n" + (isExtra ? "Extra " : "") + capitalize(category) + " Options:");
         for (int i = 0; i < items.length; i++) {
