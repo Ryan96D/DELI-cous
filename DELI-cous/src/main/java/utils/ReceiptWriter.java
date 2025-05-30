@@ -16,11 +16,10 @@ import java.util.Locale;
 
 public class ReceiptWriter {
 
-    /**
-     * Writes order details to a timestamped receipt file in the receipts directory.
+    /*
+     * Writes order details to a timestamped receipt txt file in the receipts directory.
      * Creates the receipts folder if it doesn't exist.
-     *
-     * @param order the Order object containing all items and pricing information
+
      */
     public static void writeReceipt(Order order) {
         // Ensure receipts directory exists for file storage
