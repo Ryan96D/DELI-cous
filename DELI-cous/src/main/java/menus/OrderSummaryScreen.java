@@ -10,10 +10,9 @@ import java.util.Locale;
 
 public class OrderSummaryScreen {
 
-    /**
+    /*
      * Displays a formatted summary of the complete order including all items and total price.
      *
-     * @param order the Order object containing all sandwiches, drinks, and chips
      */
     public static void display(Order order) {
         System.out.println("\n=== Order Summary ===");

@@ -1,0 +1,14 @@
+=== Order Receipt ===
+
+Sandwich #1
+LARGE Sandwich on WHITE - $13.75
+- Bread: WHITE
+- Size: LARGE
+- Meats: [BACON]
+- Cheeses: [CHEDDAR]
+- Toppings: [LETTUCE, TOMATOES]
+- Sauces: [RANCH]
+- Toasted: Yes
+
+Total: $13.75
+======================
