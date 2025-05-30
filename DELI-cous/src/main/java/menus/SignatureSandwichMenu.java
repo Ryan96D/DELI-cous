@@ -16,7 +16,10 @@ public class SignatureSandwichMenu {
             System.out.println("\n=== Signature Sandwiches ===");
             System.out.println("1) BLT");
             System.out.println("2) Philly Cheese Steak");
-            System.out.println("3) Back to main menu");
+            System.out.println("3) Italian BMT");
+            System.out.println("4) Turkey Club");
+            System.out.println("5) Veggie Deluxe");
+            System.out.println("6) Back to main menu");
             System.out.print("Choose a signature sandwich to customize: ");
 
             String choice = scanner.nextLine().trim();
@@ -37,6 +40,27 @@ public class SignatureSandwichMenu {
                     return SignatureSandwichEditorMenu.editSandwich(phillyPreset);
 
                 case "3":
+                    // Create Italian BMT preset with default ingredients
+                    ItalianBMT italianPreset = new ItalianBMT();
+                    displayPreset("Italian BMT", italianPreset);
+                    // Pass to editor for customization before returning
+                    return SignatureSandwichEditorMenu.editSandwich(italianPreset);
+
+                case "4":
+                    // Create Turkey Club preset with default ingredients
+                    TurkeyClub turkeyPreset = new TurkeyClub();
+                    displayPreset("Turkey Club", turkeyPreset);
+                    // Pass to editor for customization before returning
+                    return SignatureSandwichEditorMenu.editSandwich(turkeyPreset);
+
+                case "5":
+                    // Create Veggie Deluxe preset with default ingredients
+                    VeggieDeluxe veggiePreset = new VeggieDeluxe();
+                    displayPreset("Veggie Deluxe", veggiePreset);
+                    // Pass to editor for customization before returning
+                    return SignatureSandwichEditorMenu.editSandwich(veggiePreset);
+
+                case "6":
                     return null; // Signal to go back
 
                 default:
