@@ -16,20 +16,28 @@ import java.util.Locale;
 
 public class ReceiptWriter {
 
+    /**
+     * Writes order details to a timestamped receipt file in the receipts directory.
+     * Creates the receipts folder if it doesn't exist.
+     *
+     * @param order the Order object containing all items and pricing information
+     */
     public static void writeReceipt(Order order) {
-        // Create receipts folder if it doesn't exist
+        // Ensure receipts directory exists for file storage
         File receiptsFolder = new File("receipts");
         if (!receiptsFolder.exists()) {
             receiptsFolder.mkdir();
         }
 
-        // Create filename with current timestamp
+        // Generate unique filename using current timestamp
         String timestamp = new SimpleDateFormat("yyyyMMdd-HHmmss").format(new Date());
         File receiptFile = new File(receiptsFolder, timestamp + ".txt");
 
+        // Use try-with-resources for automatic file resource management
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(receiptFile))) {
             writer.write("=== Order Receipt ===\n");
 
+            // Write detailed breakdown for each sandwich with numbering
             int sandwichNumber = 1;
             for (Sandwich sandwich : order.getSandwiches()) {
                 writer.write("\nSandwich #" + sandwichNumber++ + "\n");
@@ -43,6 +51,7 @@ public class ReceiptWriter {
                 writer.write("- Toasted: " + (sandwich.isToasted() ? "Yes" : "No") + "\n");
             }
 
+            // Only include drinks section if drinks were ordered
             if (!order.getDrinks().isEmpty()) {
                 writer.write("\nDrinks:\n");
                 for (Drinks drink : order.getDrinks()) {
@@ -50,6 +59,7 @@ public class ReceiptWriter {
                 }
             }
 
+            // Only include chips section if chips were ordered
             if (!order.getChips().isEmpty()) {
                 writer.write("\nChips:\n");
                 for (Chips chip : order.getChips()) {
@@ -57,6 +67,7 @@ public class ReceiptWriter {
                 }
             }
 
+            // Format and write total price with US currency formatting
             String formattedTotal = NumberFormat.getCurrencyInstance(Locale.US)
                     .format(order.getTotalPrice());
             writer.write("\nTotal: " + formattedTotal + "\n");
@@ -64,6 +75,7 @@ public class ReceiptWriter {
 
             System.out.println("Receipt saved as: receipts/" + receiptFile.getName());
         } catch (IOException e) {
+            // Handle file writing errors gracefully
             System.out.println("Error writing receipt: " + e.getMessage());
         }
     }
