@@ -4,11 +4,14 @@ import models.items.Sandwich;
 import presets.*;
 import java.util.Scanner;
 
+// Menu for selecting and customizing pre-configured signature sandwiches
 public class SignatureSandwichMenu {
 
+    // Entry point for signature sandwich selection - returns customized sandwich or null if cancelled
     public static Sandwich start() {
         Scanner scanner = new Scanner(System.in);
 
+        // Keep showing menu until valid selection or user goes back
         while (true) {
             System.out.println("\n=== Signature Sandwiches ===");
             System.out.println("1) BLT");
@@ -20,13 +23,17 @@ public class SignatureSandwichMenu {
 
             switch (choice) {
                 case "1":
+                    // Create BLT preset with default ingredients
                     BLT bltPreset = new BLT();
                     displayPreset("BLT", bltPreset);
+                    // Pass to editor for customization before returning
                     return SignatureSandwichEditorMenu.editSandwich(bltPreset);
 
                 case "2":
+                    // Create Philly Cheese Steak preset with default ingredients
                     PhillyCheeseSteak phillyPreset = new PhillyCheeseSteak();
                     displayPreset("Philly Cheese Steak", phillyPreset);
+                    // Pass to editor for customization before returning
                     return SignatureSandwichEditorMenu.editSandwich(phillyPreset);
 
                 case "3":
@@ -38,6 +45,7 @@ public class SignatureSandwichMenu {
         }
     }
 
+    // Display the default configuration of a signature sandwich before customization
     private static void displayPreset(String name, Sandwich sandwich) {
         System.out.println("\n" + name + " includes:");
         System.out.println("  Bread: " + sandwich.getBread());
