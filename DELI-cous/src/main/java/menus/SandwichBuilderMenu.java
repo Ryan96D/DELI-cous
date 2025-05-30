@@ -6,7 +6,6 @@ import utils.MenuDisplayHelper;
 
 import java.util.*;
 
-// Interactive sandwich builder menu that walks customers through each customization step
 public class SandwichBuilderMenu {
 
     // Enum to track which step of the sandwich building process we're currently on
