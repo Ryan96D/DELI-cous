@@ -1,0 +1,20 @@
+=== Order Receipt ===
+
+Sandwich #1
+MEDIUM Sandwich on WHITE - $12.10
+- Bread: WHITE
+- Size: MEDIUM
+- Meats: [STEAK, CHICKEN]
+- Cheeses: [PROVOLONE, SWISS]
+- Toppings: [LETTUCE, PEPPERS, ONIONS, TOMATOES, JALAPENOS, CUCUMBERS, PICKLES, GUACAMOLE, MUSHROOMS]
+- Sauces: [MAYO, MUSTARD, KETCHUP, RANCH, THOUSAND_ISLANDS]
+- Toasted: Yes
+
+Drinks:
+- LARGE LEMONADE Drink - $3.00
+
+Chips:
+- BBQ Chips - $1.50
+
+Total: $16.60
+======================

@@ -1,0 +1,17 @@
+=== Order Receipt ===
+
+Sandwich #1
+SMALL Sandwich on WHITE - $5.50
+- Bread: WHITE
+- Size: SMALL
+- Meats: []
+- Cheeses: []
+- Toppings: []
+- Sauces: []
+- Toasted: No
+
+Chips:
+- SALT_AND_VINEGAR Chips - $1.50
+
+Total: $7.00
+======================
